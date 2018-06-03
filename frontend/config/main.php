@@ -36,14 +36,27 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        /*
+
         'urlManager' => [
             'enablePrettyUrl' => true,
-            'showScriptName' => false,
+            'showScriptName' => true,
+            'enableStrictParsing' => true,
             'rules' => [
+                ['pattern' => '', 'route' => 'article/article-list'],
+                ['pattern' => 'form', 'route' => 'article/article-form'],
+                ['pattern' => 'list', 'route' => 'article/article-list'],
+//                ['pattern' => 'admin', 'route' => 'http://test-blog-project/backend/web'],
+
+                ['pattern' => 'logout', 'route' => 'site/logout'],
+                ['pattern' => 'login', 'route' => 'site/login'],
+                ['pattern' => 'signup', 'route' => 'site/signup'],
+                ['pattern' => 'home', 'route' => 'site/index'],
+                ['pattern' => 'about', 'route' => 'site/about'],
+                ['pattern' => 'contact', 'route' => 'site/contact'],
+
             ],
         ],
-        */
+
     ],
     'params' => $params,
 ];

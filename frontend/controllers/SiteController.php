@@ -3,6 +3,7 @@ namespace frontend\controllers;
 
 use Yii;
 use yii\base\InvalidParamException;
+use yii\helpers\Url;
 use yii\web\BadRequestHttpException;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
@@ -88,7 +89,11 @@ class SiteController extends Controller
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
+            if(yii::$app->user->identity->admin == 1){
+                return $this->redirect('http://test-blog-project/backend/web');
+            }else{
+                return $this->goBack();
+            }
         } else {
             $model->password = '';
 

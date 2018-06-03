@@ -42,29 +42,17 @@ class m180602_193127_create_db extends Migration
             'updated_by' => $this->integer(11)->notNull(),
             'created_at' => $this->dateTime()->notNull(),
             'updated_at' => $this->dateTime()->notNull(),
-            'deleted_at' => $this->dateTime()->notNull(),
+            'deleted_at' => $this->dateTime()->null(),
         ], $tableOptions);
 
-//        $this->createTable('users', [
-//            'id' => $this->primaryKey(),
-//            'username' => $this->string(255)->notNull(),
-//            'password' => $this->string(255)->notNull(),
-//            'email' => $this->string(255)->notNull(),
-//            'lastname'  => $this->string(255)->notNull(),
-//            'firstname' => $this->string(255)->notNull(),
-//            'role' => $this->smallInteger(1)->notNull()->defaultValue(0),
-//            'status' => $this->smallInteger(1)->notNull()->defaultValue(0),
-//            'created_at' => $this->dateTime()->notNull(),
-//            'updated_at' => $this->dateTime()->notNull(),
-//        ], $tableOptions);
-
+        $this->addColumn('user','admin',$this->tinyInteger(1)->defaultValue(0));
 
     }
 
     public function down()
     {
         $this->dropTable('article');
-//        $this->dropTable('users');
+        $this->dropColumn('user','admin');
         return true;
     }
 

@@ -97,4 +97,14 @@ class SiteController extends Controller
 
         return $this->goHome();
     }
+    /**
+     * Logout action.
+     *
+     * @return string
+     */
+    public function actionFrontend()
+    {
+
+        return $this->redirect('http://test-blog-project/frontend/web');
+    }
 }
